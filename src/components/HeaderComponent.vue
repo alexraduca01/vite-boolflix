@@ -24,11 +24,15 @@ import { store } from '../data/store';
         methods: {
             filterCards(){
                 const url = store.apiUrl + this.store.endPoint.movie;
+                const seriesUrl = store.apiUrl + this.store.endPoint.series;
                 if(this.myQuery !== ''){
                     store.params.query = this.myQuery;
                     axios.get(url, {params: this.store.params}).then((res) => {
                         store.movieList = res.data.results;
-                    })
+                    });
+                    axios.get(seriesUrl, {params: this.store.params}).then((res) => {
+                        store.seriesList = res.data.results;
+                    }) 
                 }
             }
         }

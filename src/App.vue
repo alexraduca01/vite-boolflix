@@ -3,7 +3,12 @@
   <div class="bg-secondary">
     <div class="p-3">
       <div class="row">
+        <h2 class="text-white fs-1">Film</h2>
         <CardComponent v-for="item in store.movieList" :thumb="store.imgUrl + item.poster_path" :title="item.title" :original-title="item.original_title" :lingua="item.original_language" :vote="item.vote_average"/>
+      </div>
+      <div class="row">
+        <h2 class="text-white fs-1">Serie TV</h2>
+        <CardComponent v-for="item in store.seriesList" :thumb="store.imgUrl + item.poster_path" :title="item.title" :original-title="item.original_title" :lingua="item.original_language" :vote="item.vote_average"/>
       </div>
     </div>
   </div>
