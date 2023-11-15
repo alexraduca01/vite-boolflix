@@ -1,15 +1,19 @@
 <template>
   <div class="container">
     <div class="row">
-
+      <CardComponent v-for="item in store.movieList" :thumb="store.imgUrl + item.poster_path" :title="item.title" :original-title="item.original_title" :lingua="item.original_language" :voto="item.vote_average"/>
     </div>
   </div>
 </template>
 
 <script>
+import CardComponent from './components/CardComponent.vue';
 import axios from 'axios';
 import { store } from './data/store';
   export default {
+    components: {
+      CardComponent,
+    },
     data(){
       return {
         store,
