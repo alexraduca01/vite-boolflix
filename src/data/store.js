@@ -12,5 +12,11 @@ export const store = reactive({
     },
     movieList: [],
     seriesList: [],
+    flags: {
+        ita: 'https://flagsapi.com/IT/shiny/32.png',
+        eng: 'https://flagsapi.com/GB/shiny/32.png',
+        fra: 'https://flagsapi.com/FR/shiny/32.png',
+        esp: 'https://flagsapi.com/ES/shiny/32.png',
+    }
     
 })
