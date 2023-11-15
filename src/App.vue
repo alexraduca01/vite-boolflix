@@ -1,18 +1,24 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <CardComponent v-for="item in store.movieList" :thumb="store.imgUrl + item.poster_path" :title="item.title" :original-title="item.original_title" :lingua="item.original_language" :voto="item.vote_average"/>
+  <HeaderComponent />
+  <div class="bg-secondary">
+    <div class="p-3">
+      <div class="row">
+        <CardComponent v-for="item in store.movieList" :thumb="store.imgUrl + item.poster_path" :title="item.title" :original-title="item.original_title" :lingua="item.original_language" :vote="item.vote_average"/>
+      </div>
     </div>
   </div>
+  
 </template>
 
 <script>
 import CardComponent from './components/CardComponent.vue';
+import HeaderComponent from './components/HeaderComponent.vue';
 import axios from 'axios';
 import { store } from './data/store';
   export default {
     components: {
       CardComponent,
+      HeaderComponent,
     },
     data(){
       return {

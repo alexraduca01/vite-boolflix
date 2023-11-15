@@ -1,13 +1,13 @@
 <template>
-    <div class="col-4">
+    <div class="col-2 my-4">
         <div>
-            <img :src="thumb" :alt="title">
+            <img :src="thumb" class="w-100" :alt="title">
         </div>
-        <div>
+        <div class="text-white">
             <h3>{{ title }}</h3>
             <h4>{{ originalTitle }}</h4>
             <p>{{ lingua }}</p>
-            <p>{{ voto }}</p>
+            <p>{{ vote }}</p>
         </div>
     </div>
 </template>
@@ -20,7 +20,7 @@
             title: String,
             originalTitle: String,
             lingua: String,
-            voto: String,
+            vote: Number,
         },
         data(){
             return {
@@ -31,5 +31,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+img {
+    height: 770.69px;
+}
 </style>
