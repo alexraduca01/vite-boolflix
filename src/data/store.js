@@ -5,6 +5,7 @@ export const store = reactive({
     endPoint: {
         movie: 'search/movie',
         series: 'search/tv',
+        credits: '/credits',
     },
     params: {
         api_key: 'fe198eea5146c018587f5b5a0ecadec9',
@@ -12,11 +13,13 @@ export const store = reactive({
     },
     movieList: [],
     seriesList: [],
+    movieCastList: [],
+    seriesCastList: [],
     flags: {
         ita: 'https://flagsapi.com/IT/shiny/32.png',
         eng: 'https://flagsapi.com/GB/shiny/32.png',
         fra: 'https://flagsapi.com/FR/shiny/32.png',
         esp: 'https://flagsapi.com/ES/shiny/32.png',
-    }
-    
+    },
+    movieCastUrl: 'https://api.themoviedb.org/3/movie/',
 })

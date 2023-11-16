@@ -12,11 +12,17 @@
             <span>Lingua: </span>
             <img :src="myFlag" alt="" />
           </div>
-          <p v-if="!starFlag"><i class="fa-regular fa-star"></i></p>
           <div>
             <span>Voto: </span>
-            <i v-for="n in vote" class="fa-solid fa-star text-warning"></i>
+            <span v-for="n in 5">
+              <i v-if="n <= vote" class="fa-solid text-warning fa-star"></i>
+              <i v-else class="fa-regular fa-star"></i>
+            </span>
+            
           </div>
+          <ul>
+            <li>{{ cast }}</li>
+          </ul>
           <p>{{ overview }}</p>
         </div>
       </div>
@@ -34,6 +40,7 @@ export default {
     lingua: String,
     vote: Number,
     overview: String,
+    cast: Object,
   },
   data() {
     return {
@@ -73,7 +80,7 @@ export default {
 
 <style lang="scss" scoped>
 .card-img {
-  height: 770.69px;
+  height: 100%;
 }
 .flip-card {
     background-color: transparent;
@@ -85,6 +92,7 @@ export default {
   height: 100%;
   transition: transform 0.8s;
   transform-style: preserve-3d;
+  border: 1px solid red;
 }
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
