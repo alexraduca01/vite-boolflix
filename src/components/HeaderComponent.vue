@@ -4,7 +4,7 @@
             <h1 class="text-danger text-uppercase">Boolflix</h1>
         </div>
         <div class="d-flex justify-content-between">
-            <input @keyup.enter="filterCards" class="mx-3 form-control w-75" type="text" v-model="myQuery">
+            <input @keyup.enter="filterCards" class="mx-3 form-control w-75" type="text" v-model.trim="myQuery">
             <button @click="filterCards" class="btn btn-success">Invio</button>
         </div>
     </header>
@@ -33,8 +33,8 @@ import { store } from '../data/store';
                     axios.get(seriesUrl, {params: this.store.params}).then((res) => {
                         store.seriesList = res.data.results;
                     }) 
-                }
-            }
+                };
+            },    
         }
     }
 </script>

@@ -4,11 +4,11 @@
     <div class="p-3">
       <div class="row">
         <h2 class="text-white fs-1">Film</h2>
-        <CardComponent v-for="item in store.movieList" :thumb="store.imgUrl + item.poster_path" :title="item.title" :original-title="item.original_title" :lingua="item.original_language" :vote="Math.round(item.vote_average / 2)"/>
+        <CardComponent v-for="item in store.movieList" :thumb="store.imgUrl + item.poster_path" :title="item.title" :original-title="item.original_title" :lingua="item.original_language" :vote="Math.round(item.vote_average / 2)" :overview="item.overview"/>
       </div>
       <div class="row">
         <h2 class="text-white fs-1">Serie TV</h2>
-        <CardComponent v-for="item in store.seriesList" :thumb="store.imgUrl + item.poster_path" :title="item.name" :original-title="item.original_name" :lingua="item.original_language" :vote="Math.round(item.vote_average / 2)"/>
+        <CardComponent v-for="item in store.seriesList" :thumb="store.imgUrl + item.poster_path" :title="item.name" :original-title="item.original_name" :lingua="item.original_language" :vote="Math.round(item.vote_average / 2)" :overview="item.overview"/>
       </div>
     </div>
   </div>
@@ -46,7 +46,7 @@ import { store } from './data/store';
           store.seriesList = res.data.results;
           console.log(store.seriesList);
         });
-      }
+      },
     },
     created(){
       this.getMovies();
