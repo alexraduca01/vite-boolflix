@@ -4,7 +4,7 @@
     <div class="p-3">
       <div class="row">
         <h2 class="text-white fs-1">Film</h2>
-        <CardComponent v-for="(item, index) in store.movieList" :thumb="store.imgUrl + item.poster_path" :title="item.title" :original-title="item.original_title" :lingua="item.original_language" :vote="Math.round(item.vote_average / 2)" :overview="item.overview" :cast="store.movieCastList[index]" />
+        <CardComponent v-for="(item, index) in store.movieList" :thumb="store.imgUrl + item.poster_path" :title="item.title" :original-title="item.original_title" :lingua="item.original_language" :vote="Math.round(item.vote_average / 2)" :overview="item.overview" />
       </div>
       <div class="row">
         <h2 class="text-white fs-1">Serie TV</h2>

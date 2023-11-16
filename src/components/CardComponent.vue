@@ -21,7 +21,9 @@
             
           </div>
           <ul>
-            <li>{{ cast }}</li>
+            <li v-for="(item, index) in store.movieCastList">
+              <p v-for="(oggetto, index) in item"> {{ oggetto.name }} </p>
+            </li>
           </ul>
           <p>{{ overview }}</p>
         </div>
@@ -40,10 +42,11 @@ export default {
     lingua: String,
     vote: Number,
     overview: String,
-    cast: Object,
+    cast: String,
   },
   data() {
     return {
+      store,
       myFlag: "",
       flag: false,
       starFlag: false,
