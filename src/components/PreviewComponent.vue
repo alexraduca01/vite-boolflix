@@ -8,21 +8,21 @@
             <p class="text-danger fs-2">Chi guarda?</p>
             </div>
             <div class="d-flex justify-content-around">
-                <div class="text-white text-center mx-4">
-                    <div class="box" @click="nextPages()">
-                        <img src="https://wallpapers.com/images/high/netflix-profile-pictures-1000-x-1000-2fg93funipvqfs9i.webp">
+                <div class="main-box text-white text-center mx-4">
+                    <div class="box" @click="nextPages(store.propics[0], 'Alex')">
+                        <img :src="store.propics[0]">
                     </div>
                     <p class="fs-4">Alex</p>
                 </div>
-                <div class="text-white text-center mx-4">
-                    <div class="box" @click="nextPages()">
-                        <img src="https://wallpapers.com/images/high/netflix-profile-pictures-5yup5hd2i60x7ew3.webp">
+                <div class="main-box text-white text-center mx-4">
+                    <div class="box" @click="nextPages(store.propics[1], 'Oder')">
+                        <img :src="store.propics[1]">
                     </div>
                     <p class="fs-4">Oder</p>
                 </div>
-                <div class="text-white text-center mx-4">
-                    <div class="box" @click="nextPages()">
-                        <img src="img/iaio.png" alt="iaio">
+                <div class="main-box text-white text-center mx-4">
+                    <div class="box" @click="nextPages(store.propics[2], 'Iaio')">
+                        <img :src="store.propics[2]" alt="iaio">
                     </div>
                     <p class="fs-4">Iaio</p>
                 </div>
@@ -51,25 +51,17 @@ import { store } from '../data/store';
             }
         },
         methods: {
-            playSound (sound) {
-                if(sound) {
-                    let audio = new Audio(sound);
-                    audio.play();
-                }
-            },
             togliIntro(){
                 setTimeout(() => {
                     store.initialFlag = true;
                 }, 4000)
             },
-            nextPages(){
+            nextPages(imgPath, name){
                 store.videoFlag = true;
                 this.togliIntro();
+                store.mainPagePropics.push(imgPath, name);
             }
         },
-        created(){
-            // this.togliIntro();
-        }
     }
 </script>
 
@@ -83,8 +75,15 @@ import { store } from '../data/store';
 .fa-plus {
     font-size: 100px;
 }
-.box {
+.main-box:hover {
+    scale: 1.2;
+    transition: scale 0.5s linear;
+    
+}
+.box:hover {
     cursor: pointer;
+    box-shadow: 0 0 10px white;
+    transition: box-shadow 0.5s linear;
 }
 img {
     width: 200px;

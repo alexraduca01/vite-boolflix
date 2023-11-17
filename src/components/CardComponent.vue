@@ -4,7 +4,7 @@
           <div class="flip-card-front">
             <img :src="thumb" class="w-100 card-img" :alt="title" />
           </div>
-          <div class="flip-card-back fs-5">
+          <div class="flip-card-back fs-5" @click="playZeb()">
             <h3 class="text-success">Titolo: {{ title }}</h3>
             <h4>Titolo originale: {{ originalTitle }}</h4>
             <p v-if="!flag">Lingua: {{ lingua }}</p>

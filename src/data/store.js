@@ -27,4 +27,7 @@ export const store = reactive({
     flag: false,
     initialFlag: false,
     videoFlag: false,
+    propics: ['https://wallpapers.com/images/high/netflix-profile-pictures-1000-x-1000-2fg93funipvqfs9i.webp', 'https://wallpapers.com/images/high/netflix-profile-pictures-5yup5hd2i60x7ew3.webp', 'img/iaio.png'],
+    mainPagePropics: [],
+    easterEggFlag: false,
 })

@@ -9,9 +9,19 @@
                 <li class="cursor-pointer">La mia lista</li>
             </ul>
         </div>
-        <div class="d-flex justify-content-between">
-            <input @keyup.enter="filterCards" class="mx-3 form-control" type="text" placeholder="Ricerca" v-model.trim="myQuery">
-            <button @click="filterCards" class="btn btn-success">Invio</button>
+        <div class="d-flex justify-content-between align-items-center ">
+            <div v-if="!searchFlag" class="d-flex justify-content-between align-items-center gap-5">
+                <i class="fa-solid fs-4 text-white fa-magnifying-glass cursor-pointer" @click="search()"></i>
+                <div class="text-center">
+                    <img :src="store.mainPagePropics[0]" alt="">
+                    <p class="text-white m-0">{{ store.mainPagePropics[1] }}</p>
+                </div>
+                
+            </div>
+            <div class="d-flex justify-content-between" v-else>
+                <input @keyup.enter="filterCards" class="mx-3 form-control" type="text" placeholder="Ricerca" v-model.trim="myQuery">
+                <button @click="filterCards" class="btn btn-success">Invio</button>
+            </div>
         </div>
     </header>
 </template>
@@ -25,6 +35,7 @@ import { store } from '../data/store';
             return {
                 store,
                 myQuery: '',
+                searchFlag: false,
             }
         },
         methods: {
@@ -54,12 +65,19 @@ import { store } from '../data/store';
                     store.seriesList = res.data.results;
                 });
                 store.flag = false;
-            }
+            },
+            search(){
+                this.searchFlag = true;
+            },
         }
     }
 </script>
 
 <style lang="scss" scoped>
+img {
+    height: 70px;
+    width: 70px
+}
 header {
     position: fixed;
     z-index: 1000;
