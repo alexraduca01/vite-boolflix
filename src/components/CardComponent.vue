@@ -2,7 +2,7 @@
     <div class="col-2 flex-direction-start my-5 flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <img :src="thumb" class="w-100 card-img" :alt="title" />
+            <img :src="noImg()" class="w-100 card-img" :alt="title" />
           </div>
           <div class="flip-card-back fs-5" @click="playZeb()">
             <h3 class="text-success">Titolo: {{ title }}</h3>
@@ -67,6 +67,13 @@ export default {
         this.myFlag = store.flags.esp;
       }
     },
+    noImg(){
+      if(this.thumb){
+        return store.imgUrl + this.thumb;
+      } else {
+        return 'https://lightwidget.com/wp-content/uploads/localhost-file-not-found.jpg';
+      }
+    }
   },
   created() {
     this.changeFlag();
@@ -111,5 +118,8 @@ export default {
     transform: rotateY(180deg);
     overflow-y: auto;
     padding: 2rem;
+}
+.flip-card-back::-webkit-scrollbar{
+  display: none;
 }
 </style>
