@@ -25,4 +25,6 @@ export const store = reactive({
     },
     movieCastUrl: 'https://api.themoviedb.org/3/movie/',
     flag: false,
+    initialFlag: false,
+    videoFlag: false,
 })

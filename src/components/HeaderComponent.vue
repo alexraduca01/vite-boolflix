@@ -4,8 +4,6 @@
             <h1 class="text-danger text-uppercase me-3 mb-0">Boolflix</h1>
             <ul class="text-secondary d-flex justify-content-between mb-0 fs-5 list-unstyled gap-3">
                 <li class="text-white cursor-pointer" @click="goHome">Home</li>
-                <li class="cursor-pointer">Serie TV</li>
-                <li class="cursor-pointer">Film</li>
                 <li class="cursor-pointer">Originali</li>
                 <li class="cursor-pointer">Aggiunti di recente</li>
                 <li class="cursor-pointer">La mia lista</li>
