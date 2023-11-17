@@ -18,13 +18,7 @@
               <i v-if="n <= vote" class="fa-solid text-warning fa-star"></i>
               <i v-else class="fa-regular fa-star"></i>
             </span>
-            
           </div>
-          <ul>
-            <li v-for="(item, index) in store.movieCastList">
-              <p v-for="(oggetto, index) in item"> {{ oggetto.name }} </p>
-            </li>
-          </ul>
           <p>{{ overview }}</p>
         </div>
       </div>
@@ -42,7 +36,6 @@ export default {
     lingua: String,
     vote: Number,
     overview: String,
-    cast: String,
   },
   data() {
     return {

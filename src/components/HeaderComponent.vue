@@ -43,17 +43,19 @@ import { store } from '../data/store';
                     }) 
                 };
                 this.myQuery = '';
+                store.flag = true;
             },
             goHome(){
                 store.params.query = 'a';
-                const seriesUrl = store.apiUrl + this.store.endPoint.series;
-                const url = store.apiUrl + this.store.endPoint.movie;
-                axios.get(url, {params: this.store.params}).then((res) => {
+                const seriesUrl = store.mostTrendingSeries;
+                const url = store.mostTrendingMovies;
+                axios.get(url + store.params.api_key).then((res) => {
                     store.movieList = res.data.results;
                 });
-                axios.get(seriesUrl, {params: this.store.params}).then((res) => {
+                axios.get(seriesUrl + store.params.api_key).then((res) => {
                     store.seriesList = res.data.results;
-                }) 
+                });
+                store.flag = false;
             }
         }
     }
