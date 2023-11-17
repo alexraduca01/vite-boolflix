@@ -1,27 +1,28 @@
 <template>
-    <div class="col-2 my-5 flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img :src="thumb" class="w-100 card-img" :alt="title" />
-        </div>
-        <div class="flip-card-back fs-5">
-          <h3 class="text-success">Titolo: {{ title }}</h3>
-          <h4>Titolo originale: {{ originalTitle }}</h4>
-          <p v-if="!flag">Lingua: {{ lingua }}</p>
-          <div v-else >
-            <span>Lingua: </span>
-            <img :src="myFlag" alt="" />
+    <div class="col-2 flex-direction-start my-5 flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img :src="thumb" class="w-100 card-img" :alt="title" />
           </div>
-          <div>
-            <span>Voto: </span>
-            <span v-for="n in 5">
-              <i v-if="n <= vote" class="fa-solid text-warning fa-star"></i>
-              <i v-else class="fa-regular fa-star"></i>
-            </span>
+          <div class="flip-card-back fs-5">
+            <h3 class="text-success">Titolo: {{ title }}</h3>
+            <h4>Titolo originale: {{ originalTitle }}</h4>
+            <p v-if="!flag">Lingua: {{ lingua }}</p>
+            <div v-else >
+              <span>Lingua: </span>
+              <img :src="myFlag" alt="" />
+            </div>
+            <div>
+              <span>Voto: </span>
+              <span v-for="n in 5">
+                <i v-if="n <= vote" class="fa-solid text-warning fa-star"></i>
+                <i v-else class="fa-regular fa-star"></i>
+              </span>
+            </div>
+            <p>{{ overview }}</p>
           </div>
-          <p>{{ overview }}</p>
-        </div>
       </div>
+      
     </div>
 </template>
 
@@ -88,7 +89,6 @@ export default {
   height: 100%;
   transition: transform 0.8s;
   transform-style: preserve-3d;
-  border: 1px solid red;
 }
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);

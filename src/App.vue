@@ -4,14 +4,22 @@
     <HeaderComponent/>
     <div class="bg-dark ptop-100">
       <div class="p-3">
-        <div class="row">
-          <h2 class="text-white fs-1" v-if="!store.flag">Film in tendenza</h2>
-          <h2 class="text-white fs-1" v-else>Film</h2>
+        <h2 class="text-white fs-1" v-if="!store.flag">Film in tendenza</h2>
+        <h2 class="text-white fs-1" v-else>Film</h2>
+        <div class="text-white d-flex justify-content-end gap-3">
+          <i class="fa-solid fs-3 fa-arrow-left" @click="scollLeftMovie()"></i>
+          <i class="fa-solid fs-3 fa-arrow-right" @click="scrollRightMovie()"></i>
+        </div>
+        <div ref="movieContainer" class="row scroll-behavior overflow-hidden flex-nowrap">
           <CardComponent v-for="(item, index) in store.movieList" :thumb="store.imgUrl + item.poster_path" :title="item.title" :original-title="item.original_title" :lingua="item.original_language" :vote="Math.round(item.vote_average / 2)" :overview="item.overview" />
         </div>
-        <div class="row">
-          <h2 class="text-white fs-1" v-if="!store.flag">Serie TV in tendenza</h2>
-          <h2 class="text-white fs-1" v-else>Serie TV</h2>
+        <h2 class="text-white fs-1" v-if="!store.flag">Serie TV in tendenza</h2>
+        <h2 class="text-white fs-1" v-else>Serie TV</h2>
+        <div class="text-white d-flex justify-content-end gap-3">
+          <i class="fa-solid fs-3 fa-arrow-left" @click="scrollLeftSeries()"></i>
+          <i class="fa-solid fs-3 fa-arrow-right" @click="scrollRightSeries()"></i>
+        </div>
+        <div ref="seriesContainer" class="row scroll-behavior overflow-hidden flex-nowrap">
           <CardComponent v-for="item in store.seriesList" :thumb="store.imgUrl + item.poster_path" :title="item.name" :original-title="item.original_name" :lingua="item.original_language" :vote="Math.round(item.vote_average / 2)" :overview="item.overview"/>
         </div>
       </div>
@@ -51,6 +59,18 @@ import { store } from './data/store';
           store.seriesList = res.data.results;
         });
       },
+      scrollRightMovie(){
+        this.$refs.movieContainer.scrollBy(400, 0);
+      },
+      scollLeftMovie(){
+        this.$refs.movieContainer.scrollBy(-400, 0);
+      },
+      scrollRightSeries(){
+        this.$refs.seriesContainer.scrollBy(400, 0);
+      },
+      scrollLeftSeries(){
+        this.$refs.seriesContainer.scrollBy(-400, 0);
+      },
     },
     created(){
       this.getMovies();
@@ -60,6 +80,12 @@ import { store } from './data/store';
 </script>
 
 <style lang="scss" scoped>
+.scroll-behavior{
+  scroll-behavior: smooth;
+}
+i {
+  cursor: pointer;
+}
 .ptop-100{
   padding-top: 100px;
 }
