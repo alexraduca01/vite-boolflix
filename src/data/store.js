@@ -24,6 +24,7 @@ export const store = reactive({
         esp: 'https://flagsapi.com/ES/shiny/32.png',
     },
     movieCastUrl: 'https://api.themoviedb.org/3/movie/',
+    seriesCastUrl: 'https://api.themoviedb.org/3/tv/',
     flag: false,
     initialFlag: false,
     videoFlag: false,

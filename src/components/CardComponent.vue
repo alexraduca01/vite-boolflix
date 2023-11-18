@@ -1,5 +1,5 @@
 <template>
-    <div class="col-2 flex-direction-start my-5 flip-card">
+    <div class="col-2 flex-direction-start my-5 flip-card" @mouseenter="getCredits(), getSeriesCredits()">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img :src="noImg()" class="w-100 card-img" :alt="title" />
@@ -12,6 +12,10 @@
               <span>Lingua: </span>
               <img :src="myFlag" alt="" />
             </div>
+            <ul class="list-unstyled">
+              <li class="fs-4">Cast: </li>
+              <li v-for="item in cast">{{ item }}</li>
+            </ul>
             <div>
               <span>Voto: </span>
               <span v-for="n in 5">
@@ -27,6 +31,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import { store } from "../data/store";
 export default {
   name: "CardComponent",
@@ -37,6 +42,8 @@ export default {
     lingua: String,
     vote: Number,
     overview: String,
+    id: Number,
+    cast: Array,
   },
   data() {
     return {
@@ -73,6 +80,36 @@ export default {
       } else {
         return 'https://lightwidget.com/wp-content/uploads/localhost-file-not-found.jpg';
       }
+    },
+    getCredits(){
+      if(this.cast && this.cast.length > 0){
+        return
+      }
+      let cast = [];
+      const url = store.movieCastUrl + this.id + store.endPoint.credits + '?api_key=' + store.params.api_key;
+      axios.get(url).then((res) => {
+        for(let i = 0; i < 5; i++){
+          if(res.data.cast[i]){
+            cast.push(res.data.cast[i].name);
+          }
+        }
+        this.$emit('movieCast', cast);
+      })
+    },
+    getSeriesCredits(){
+      if(this.cast && this.cast.length > 0){
+        return
+      }
+      let cast = [];
+      const url = store.seriesCastUrl + this.id + store.endPoint.credits + '?api_key=' + store.params.api_key;
+      axios.get(url).then((res) => {
+        for(let i = 0; i < 5; i++){
+          if(res.data.cast[i]){
+            cast.push(res.data.cast[i].name);
+          }
+        }
+        this.$emit('seriesCast', cast);
+      })
     }
   },
   created() {
