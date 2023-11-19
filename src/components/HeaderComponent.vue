@@ -36,6 +36,7 @@ import { store } from '../data/store';
                 store,
                 myQuery: '',
                 searchFlag: false,
+                movieGenreId: '',
             }
         },
         methods: {
@@ -69,18 +70,29 @@ import { store } from '../data/store';
             search(){
                 this.searchFlag = true;
             },
-        }
+            filterGenre(){
+                const url = store.genreUrl + store.params.api_key;
+                axios.get(url).then((res) => {
+                    store.filteredGenres = res.data.genres;
+                    console.log(store.filteredGenres);
+                });
+            },
+        },
     }
 </script>
 
 <style lang="scss" scoped>
+select {
+    width: 150px;
+}
 img {
     height: 70px;
     width: 70px
 }
 header {
     position: fixed;
-    z-index: 1000;
+    top: 0;
+    z-index: 8000;
     background-color: rgba($color: #000000, $alpha: 0.5);
     height: 100px;
 }

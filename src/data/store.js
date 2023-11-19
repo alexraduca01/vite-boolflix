@@ -4,6 +4,8 @@ export const store = reactive({
     imgUrl: 'https://image.tmdb.org/t/p/w342',
     mostTrendingMovies: 'https://api.themoviedb.org/3/trending/movie/week?api_key=',
     mostTrendingSeries: 'https://api.themoviedb.org/3/trending/tv/week?api_key=',
+    genreUrl: 'https://api.themoviedb.org/3/genre/movie/list?api_key=',
+    seriesGenreUrl: 'https://api.themoviedb.org/3/genre/tv/list?api_key=',
     endPoint: {
         movie: 'search/movie',
         series: 'search/tv',
@@ -31,4 +33,5 @@ export const store = reactive({
     propics: ['https://wallpapers.com/images/high/netflix-profile-pictures-1000-x-1000-2fg93funipvqfs9i.webp', 'https://wallpapers.com/images/high/netflix-profile-pictures-5yup5hd2i60x7ew3.webp', 'img/iaio.png'],
     mainPagePropics: [],
     easterEggFlag: false,
+    randomVideo: ['video/GenV.mp4', 'video/one-piece.mp4','video/oppenheimer.mp4','video/the-boys.mp4'],
 })

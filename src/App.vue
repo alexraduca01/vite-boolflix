@@ -1,13 +1,18 @@
 <template>
   <PreviewComponent v-if="!store.initialFlag"/>
-  <div v-else >
+  <div v-else class="bg-dark">
+    <div>
+      <video class="w-100" autoplay>
+        <source :src="randomTrailer()" type="video/mp4">
+      </video>
+    </div>
     <div class="easter" v-if="store.easterEggFlag" @click="toggleVideo()">
-        <video autoplay>
+        <video autoplay class="easter-video">
             <source src="video/Eh-volevi.mp4" type="video/mp4">
         </video>
     </div>
     <HeaderComponent />
-    <div class="bg-dark ptop-100">
+    <div class="ptop-100">
       <div class="p-3">
         <h2 class="text-white fs-1" v-if="!store.flag">Film in tendenza</h2>
         <h2 class="text-white fs-1" v-else>Film</h2>
@@ -87,11 +92,18 @@ import { store } from './data/store';
       },
       toggleVideo(){
         store.easterEggFlag = false;
-      }
+      },
+      getRndInteger(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) ) + min;
+      },
+      randomTrailer(){
+        return store.randomVideo[this.getRndInteger(0, store.randomVideo.length - 1)];
+      },
     },
     created(){
       this.getMovies();
       this.getSeries();
+      this.randomTrailer();
     }
   }
 </script>
@@ -108,7 +120,7 @@ import { store } from './data/store';
     background-color: rgba(0, 0, 0, 0.500);
     z-index: 1000;
 }
-video {
+.easter-video {
     position: absolute;
     top: 50%;
     left: 50%;
